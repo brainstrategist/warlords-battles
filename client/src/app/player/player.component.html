@@ -1,0 +1,7 @@
+<div>
+    <h4> {{Title}}</h4>
+    <div class="row" *ngIf="playerResponse">
+        <div class="col-lg-4"><b>{{ (playerResponse | async)?.name }}</b></div>
+        <div class="col-lg-4"><i>{{ (playerResponse | async)?._id }}</i></div>
+    </div>
+</div>

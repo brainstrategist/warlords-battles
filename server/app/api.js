@@ -17,6 +17,9 @@ router.get('/', function(req, res) {
 // API CLASSES
 var Player  = require('../app/models/player');
 
+/*
+ *   Retrieving all users / Create a user
+ */
 router.route('/player')
     .get(function(req, res) {
 
@@ -39,9 +42,46 @@ router.route('/player')
             });
 
         });
-})
+    })
+/*
+*   Retrieving / Updating / Deleting an user
+*/
+router.route('/player/:_id')
+    .get(function(req, res) {
+        Player.findById(req.params._id, function(err, player) {
+            if (err)
+                res.send(err);
+            res.json(player);
+        });
+    }).put(function(req, res) {
 
+        // use our bear model to find the bear we want
+        Player.findById(req.params._id, function(err, bear) {
 
+            if (err)
+                res.send(err);
+
+            player.name = req.body.name;  // update the bears info
+
+            // save the bear
+            Player.save(function(err) {
+                if (err)
+                    res.send(err);
+
+                res.json({ message: 'Player updated!' });
+            });
+
+        });
+    }).delete(function(req, res) {
+        Player.remove({
+            _id: req.params._id
+        }, function(err, bear) {
+            if (err)
+                res.send(err);
+
+            res.json({ message: 'Successfully deleted' });
+        });
+    });
 
 
 module.exports = router;
