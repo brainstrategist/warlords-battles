@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
+import { BehaviorSubject} from 'rxjs/Rx';
 import {Router, ActivatedRoute} from '@angular/router';
-
 import { PlayerService } from './player.service'
 import { Player } from './player.model';
 
@@ -11,28 +11,36 @@ import { Player } from './player.model';
 })
 export class PlayerComponent {
     //Assign
-    public propertyService:PlayerService;
-    public player:Player;
-    public playerResponse:Promise<any>;
+    public player:any;
     private id: number;
     private sub: any;
 
+    constructor(
+        private playerService : PlayerService,
+        private activatedRoute: ActivatedRoute,
+        private router: Router,) {}
 
-    constructor(_playerservice : PlayerService,private activatedRoute: ActivatedRoute) {
-        this.propertyService = _playerservice;
-    }
+    delete_btn = 'true';
+
     ngOnInit() {
         this.sub = this.activatedRoute.params.subscribe(params => {
             this.id = (params as any).id; // (+) converts string 'id' to a number
             });
 
-        this.playerResponse = this.propertyService.getPlayer(this.id).then(data => this.player = data);
+        this.playerService.load(this.id);
+        this.player = this.playerService.result();
 
     }
+
     ngOnDestroy() {
         this.sub.unsubscribe();
     }
-    Title = 'player data';
+
+    onDelete(player: Player) {
+        this.router.navigate(['/player/remove/', player._id]);
+    }
+
+    Title = "Player data";
 
 }
 

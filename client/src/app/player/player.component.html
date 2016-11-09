@@ -1,7 +1,11 @@
 <div>
-    <h4> {{Title}}</h4>
-    <div class="row" *ngIf="playerResponse">
-        <div class="col-lg-4"><b>{{ (playerResponse | async)?.name }}</b></div>
-        <div class="col-lg-4"><i>{{ (playerResponse | async)?._id }}</i></div>
+    <h2> {{Title}} </h2>
+    <div class="row" *ngFor="let p of player | async ">
+        <div class="col-lg-4"><b>{{ p.name }}</b></div>
+        <div class="col-lg-4"><i>{{ p._id }}</i></div>
+        <a  *ngIf="delete_btn == 'true'" (click)="onDelete(p)"> Delete </a>
     </div>
+</div>
+<div class="row" *ngIf="result">
+    <p>{{ result }}</p>
 </div>

@@ -8,5 +8,4 @@ export class Player {
         this._id = userInfo._id;
         this.name = userInfo.name;
     }
-
 }

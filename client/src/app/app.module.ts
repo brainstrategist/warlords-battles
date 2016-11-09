@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from '../app/home/home.component';
 import { PlayerComponent } from '../app/player/player.component';
 import { PlayerListComponent } from '../app/player-list/player-list.component';
+import { PlayerRemoveComponent } from '../app/player-remove/player-remove.component';
 import { PageNotFoundComponent } from '../app/page-not-found/page-not-found.component';
 
 import * as jQuery from 'jquery';
@@ -18,6 +19,7 @@ import * as jQuery from 'jquery';
     AppComponent,
     HomeComponent,
     PlayerListComponent,
+    PlayerRemoveComponent,
     PlayerComponent,
     PageNotFoundComponent
   ],
@@ -28,6 +30,7 @@ import * as jQuery from 'jquery';
     //AlertModule,
     RouterModule.forRoot([
           { path: 'player/:id', component: PlayerComponent },
+          { path: 'player/remove/:id', component: PlayerRemoveComponent },
           {
             path: 'players',
             component: PlayerListComponent,

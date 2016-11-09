@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-
 import { PlayerService } from '../player/player.service'
 import { Player } from '../player/player.model';
 import { Router } from '@angular/router';
@@ -11,20 +10,18 @@ import { Router } from '@angular/router';
 })
 export class PlayerListComponent {
     //Assign
-    public propertyService:PlayerService;
-    public player:Player;
-    public players:Promise<any>;
+    public players:any;
 
-    constructor( private router: Router,_playerservice : PlayerService) {
-        this.propertyService = _playerservice;
-    }
+    constructor( private router: Router,private playerService : PlayerService) {}
     ngOnInit() {
-        this.players = this.propertyService.getPlayers().then(data => this.player = data);
-
+        this.playerService.loadAll();
+        this.players = this.playerService.result();
     }
+
     onSelect(player: Player) {
         this.router.navigate(['/player', player._id]);
     }
+    Title = "Player Listing";
 }
 
 
