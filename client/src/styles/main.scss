@@ -1,10 +1,11 @@
 @import url('https://fonts.googleapis.com/css?family=IM+Fell+English|IM+Fell+English+SC');
+@import 'colors';
 
 body[ng-app=app-root] {
     background: #a79381  url("/assets/background.jpg") no-repeat top center;
-    color: #0a0907;
+    color: $primary-font-color;
     a{
-        color: #3d302b;
+        color: $main-link-color;
     }
     h1,h2,h3,h4{
         font-family: 'IM Fell English SC', serif;
@@ -14,38 +15,145 @@ body[ng-app=app-root] {
         margin-top: 60px;
 
         div.masthead{
+            position: relative;
+            background: transparent  url("/assets/nav/repeat-nav.png") repeat-x  center 20px;
+            top: 68px;
+            z-index: 10;
             h1{
                 text-align: center;
-                color:rgb(169, 130, 58);
+                color:$primary-title-color;
                 font-size: 55px;
                 margin-bottom:40px;
                 text-shadow:  2px 2px 4px #000000,-1px 0px 0px #f7cd82;
+                position: relative;
+                top: -80px;
             }
         }
         nav.navbar-default{
-            background: #3f322b;
-            border: 1px solid #5f4d37;
-            -webkit-box-shadow: 0 0 3px 3px rgba(0,0,0,0.3);
-            box-shadow: 0 0 3px 3px rgba(0,0,0,0.3);
-            .navbar-brand{
-                color: #998662;
+
+            //background: #3f322b;
+            //border: 1px solid #5f4d37;
+            //-webkit-box-shadow: 0 0 3px 3px rgba(0,0,0,0.3);
+            //box-shadow: 0 0 3px 3px rgba(0,0,0,0.3);
+            background: transparent  url("/assets/nav/nav-center.png") no-repeat center 5px;
+            border: none;
+            height: 185px;
+            position: absolute;
+            top: -20px;
+            width: 100%;
+            z-index: 5;
+
+            &:before{
+                content: '';
+                display: block;
+                width: 242px;
+                position: absolute;
+                height: 120px;
+                background: url('/assets/nav/nav-left.png') no-repeat top left;
+                left: -50px;
+                top: 20px;
             }
+
+            &:after{
+                content: '';
+                display: block;
+                width: 183px;
+                position: absolute;
+                height: 120px;
+                background: url('/assets/nav/nav-right.png') no-repeat top right;
+                right: -20px;
+                top: 27px;
+            }
+
+
             .navbar-nav{
+                margin: 52px 0 0;
                 >li{
                     >a{
                         color: #caad76;
                         font-size: 16px;
                         text-transform: uppercase;
                         font-family: 'IM Fell English', serif;
+                        display: block;
+                        background: url('/assets/nav/bt-men-repeat.png') repeat-x top center;
+                        margin-left: 60px;
+                        position: relative;
+                        top: -2px;
+
+                        &:before{
+                            content: '';
+                            display: block;
+                            width: 30px;
+                            position: absolute;
+                            height: 60px;
+                            background: url('/assets/nav/bt-men-left.png') no-repeat top left;
+                            left: -24px;
+                            top: 0px;
+                        }
+
+                        &:after{
+                            content: '';
+                            display: block;
+                            width: 30px;
+                            position: absolute;
+                            height: 60px;
+                            background: url('/assets/nav/bt-men-right.png') no-repeat top right;
+                            top: 0px;
+                            right: -20px;
+                        }
+
+                        i{
+                            display: block;
+                            height: 50px;
+                            width: 70px;
+                            position: absolute;
+                            left: -20px;
+                            &.home-icon{
+                                background: url('/assets/nav/icons/home-icon.png') no-repeat center center;
+                                top: -3px;
+                            }
+                        }
+                        span{
+                            display: block;
+                            margin: 3px 0 0 30px;
+                        }
+                    }
+                    &:first-child{
+                        a{
+                            margin-left: 30px;
+                        }
                     }
                 }
 
             }
         }
         .main-content{
+            background: rgba(177, 146, 114, 0.37);
+            min-height: 450px;
+            padding-top: 50px;
+            position: relative;
+
+            &:before{
+                content: '';
+                display: block;
+                width: 100%;
+                position: absolute;
+                height: 50px;
+                background: url('/assets/deco-repeat.png');
+                top: -15px;
+            }
+            &:after{
+                content: '';
+                display: block;
+                width: 100%;
+                position: absolute;
+                height: 50px;
+                background: url('/assets/deco-repeat.png');
+                bottom: -20px;
+            }
             h2{
                 font-size: 40px;
-                color: #bb8e4a;
+                color: $primary-title-color;
                 text-shadow: -1px 3px 3px #352504;
             }
         }
